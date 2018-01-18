@@ -29,8 +29,6 @@ router.use(function timeLog (req, res, next) {
 router.get('/', routes.getHome);
 router.get('/map', routes.getMap);
 
-
-
 server.listen(port, () => {
     console.log(`Server listening on port: ${port}`);
 });
