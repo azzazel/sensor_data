@@ -1,6 +1,21 @@
-const sensor = require('./sensor');
+const path    = require('path');
 
-module.exports = function(app, db) {
-  sensor(app, db);
-  // Other route groups could go here, in the future
+var getHome  = (req, res) => {
+  //res.send('home');
+  //res.sendFile(__dirname + '../public/index.html');
+  res.sendFile('index.html', { root: path.join(__dirname, '../public') });
+};
+
+var getMap = (req, res) => {
+  res.send('map');
+}
+
+var getPostData  = (req, res) => {
+  res.send('Hello');
+};
+
+module.exports = {
+  getHome,
+  getMap,
+  getPostData
 };
