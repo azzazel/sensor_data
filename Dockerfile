@@ -1,4 +1,5 @@
 FROM node:carbon
+# FROM arm32v7/node:carbon
 
 # Create app directory
 WORKDIR /usr/src/app
