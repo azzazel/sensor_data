@@ -18,22 +18,25 @@ io.on('connection', (client) => {
 });
 
 const routes = require('./app/routes/index.js');
-
-app.use(bodyParser.urlencoded({
-  extended: true,
-}));
-app.use(bodyParser.json());
+/*eslint comma-dangle: ["error", "never"]*/
+app.use(bodyParser.text());
 
 app.use(express.static(__dirname + '/node_modules'));
-app.use('/', router);
+app.use(router);
 
+// Middleware
 router.use(function timeLog(req, res, next) {
   console.log('Time: ', Date.now());
+  console.log('From middleware headers: ', req.headers);
+  if (req.method === 'POST' && req.originalUrl === '/sensor') {
+    io.sockets.emit('payload', req.body);
+  }
   next();
 });
 
 router.get('/', routes.getHome);
 router.get('/map', routes.getMap);
+router.post('/sensor', routes.getPostData);
 
 server.listen(port, () => {
   console.log(`Server listening on port: ${port}`);
