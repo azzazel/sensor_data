@@ -9,7 +9,7 @@ const port           = 4200;
 
 // Socket Io connection
 io.on('connection', function(client) {
-    console.log('Client connected...');
+    console.log('Client connected at: ', Date.now());
     client.on('join', function(data) {
         console.log(data);
         client.emit('messages', 'Hello from server');
@@ -32,3 +32,5 @@ router.get('/map', routes.getMap);
 server.listen(port, () => {
     console.log(`Server listening on port: ${port}`);
 });
+
+module.exports = app;
