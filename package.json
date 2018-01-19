@@ -1,9 +1,12 @@
 {
   "name": "sensor-data",
   "version": "1.0.0",
-  "description": "",
+  "description": "Iphone sensors vizualisation node express + socket.io",
   "main": "server.js",
   "scripts": {
+    "pretest": "eslint --ignore-path .gitignore .",
+    "start-dev": "nodemon app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -15,6 +18,8 @@
     "socket.io": "^2.0.4"
   },
   "devDependencies": {
+    "eslint": "^4.15.0",
+    "eslint-config-strongloop": "^2.1.0",
     "nodemon": "^1.14.11"
   }
 }
