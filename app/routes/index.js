@@ -14,5 +14,6 @@ module.exports = {
   getPostData: (req, res, next) => {
     var data = JSON.stringify(req.body);
     res.send(data);
+    res.end();
   },
 };
